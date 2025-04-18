@@ -1,0 +1,27 @@
+site_name: Star
+nav:
+  - First: index.md
+  - Second: second.md
+theme: readthedocs
+plugins:
+  - search
+  - exporter:
+      formats:
+        pdf:
+          enabled: true
+          concurrency: 16
+          aggregator:
+            enabled: !ENV [MKDOCS_EXPORTER_PDF_AGGREGATOR, true]
+            output: C:\Users\uglevodorod\star\doca.pdf
+            covers: none
+      buttons:
+        - title: View as PDF
+          icon: material-file-move-outline
+          enabled: !!python/name:mkdocs_exporter.formats.pdf.buttons.download.enabled
+          attributes:
+            target: _blank
+            href: !!python/name:mkdocs_exporter.formats.pdf.buttons.download.href
+        - title: Download as PDF
+          icon: material-file-download-outline
+          enabled: !!python/name:mkdocs_exporter.formats.pdf.buttons.download.enabled
+          attributes: !!python/name:mkdocs_exporter.formats.pdf.buttons.download.attributes
